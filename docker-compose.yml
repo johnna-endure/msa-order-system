@@ -1,0 +1,27 @@
+version: "3.0"
+services: 
+    eureka:
+        build: ./service-discovery-service
+        ports:
+            - 8761:8761
+        restart: on-failure
+    
+    # zuul:            
+    #     build: ./gateway-service
+    #     ports:
+    #         - 9000:9000
+    #     restart: on-failure            
+    #     depends_on: 
+    #         - eureka
+
+    member:
+        build: ./member-service
+        ports: 
+            - 8081:8081
+        restart: on-failure
+        depends_on: 
+            - eureka
+    
+    # ui-service:
+        
+    

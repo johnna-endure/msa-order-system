@@ -1,0 +1,12 @@
+version: "3.0"
+services:
+  member-service:
+    build: ../member-service
+    ports:
+      - 8081:8081
+    restart: on-failure
+  eureka:
+    build: ../service-discovery-service
+    ports:
+      - 8761:8761
+    restart: on-failure
